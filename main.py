@@ -5,12 +5,10 @@ from database import SessionLocal, engine
 from pydantic import BaseModel
 from typing import Optional
 
-# Create tables (if not present)
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Simple FastAPI Todo App")
 
-# Dependency to get DB session
 def get_db():
     db = SessionLocal()
     try:
@@ -18,17 +16,14 @@ def get_db():
     finally:
         db.close()
 
-# Simple health endpoint for recruiter checks
 @app.get("/health")
 def health_check():
     return {"status": "ok", "message": "FastAPI is running!"}
 
-# Root route
 @app.get("/")
 def home():
     return {"message": "Welcome to the Todo API"}
 
-# Pydantic schema
 class TodoCreate(BaseModel):
     title: str
     description: Optional[str] = None
