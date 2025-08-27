@@ -12,7 +12,7 @@ app = FastAPI(title="Simple FastAPI Todo App")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://fastapi-to-do-app.onrender.com"],  
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
