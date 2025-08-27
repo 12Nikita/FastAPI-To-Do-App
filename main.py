@@ -6,16 +6,13 @@ from pydantic import BaseModel
 from typing import Optional
 from fastapi.middleware.cors import CORSMiddleware
 
-
-
-
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="Simple FastAPI Todo App")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # or restrict to ["http://localhost:3000", "your-frontend-domain"]
+    allow_origins=["https://fastapi-to-do-app.onrender.com"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
